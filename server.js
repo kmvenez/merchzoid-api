@@ -3,6 +3,36 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
+// require stripe payment method
+const stripe = require('stripe')('sk_test_51I0aIkLFzNZ9971gwTcbXvW91hMPab4rFn28O8NA8nNUyMH05U07Fezxv1pX6td6suCw0lJPYgKBwxsmmOZmhiEY00bFeuqFmL')
+const app = express()
+app.use(express.static('.'))
+
+const YOUR_DOMAIN = 'http://localhost:7165/checkout'
+
+app.post('/create-checkout-session', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png']
+          },
+          unit_amount: 2000
+        },
+        quantity: 1
+      }
+    ],
+    mode: 'payment',
+    success_url: `${YOUR_DOMAIN}?success=true`,
+    cancel_url: `${YOUR_DOMAIN}?canceled=true`
+  })
+  res.json({ id: session.id })
+})
+
 // require route files
 const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
@@ -33,9 +63,6 @@ mongoose.connect(db, {
   useNewUrlParser: true,
   useCreateIndex: true
 })
-
-// instantiate express application object
-const app = express()
 
 // set CORS headers on response from this API using the `cors` NPM package
 // `CLIENT_ORIGIN` is an environment variable that will be set on Heroku
