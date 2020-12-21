@@ -12,7 +12,8 @@ curl "${API}${URL_PATH}" \
     "merch": {
       "title": "'"${TITLE}"'",
       "type": "'"${TYPE}"'",
-      "description": "'"${DESCRIPTION}"'"
+      "description": "'"${DESCRIPTION}"'",
+      "price": "'"${PRICE}"'"
     }
   }'
 

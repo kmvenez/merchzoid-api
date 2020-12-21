@@ -4,11 +4,12 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 // require stripe payment method
-const stripe = require('stripe')('sk_test_51I0aIkLFzNZ9971gwTcbXvW91hMPab4rFn28O8NA8nNUyMH05U07Fezxv1pX6td6suCw0lJPYgKBwxsmmOZmhiEY00bFeuqFmL')
 const app = express()
-app.use(express.static('.'))
 
-const YOUR_DOMAIN = 'http://localhost:7165/checkout'
+// Set your secret key. Remember to switch to your live secret key in production!
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+const Stripe = require('stripe')
+const stripe = Stripe('sk_test_51I0aIkLFzNZ9971gwTcbXvW91hMPab4rFn28O8NA8nNUyMH05U07Fezxv1pX6td6suCw0lJPYgKBwxsmmOZmhiEY00bFeuqFmL')
 
 app.post('/create-checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
@@ -18,8 +19,7 @@ app.post('/create-checkout-session', async (req, res) => {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: 'Stubborn Attachments',
-            images: ['https://i.imgur.com/EHyR2nP.png']
+            name: 'T-shirt'
           },
           unit_amount: 2000
         },
@@ -27,9 +27,10 @@ app.post('/create-checkout-session', async (req, res) => {
       }
     ],
     mode: 'payment',
-    success_url: `${YOUR_DOMAIN}?success=true`,
-    cancel_url: `${YOUR_DOMAIN}?canceled=true`
+    success_url: 'https://example.com/success',
+    cancel_url: 'https://example.com/cancel'
   })
+
   res.json({ id: session.id })
 })
 
