@@ -3,6 +3,9 @@ This application is at it's core an ecommerce platform.  It's designed with a si
 # Planning Story:
 This application began by setting up the backend with Express.  Once that was up and functional, then the frontend was created with React and Bootstrap.
 
+# Set up and installation instructions for front end application:
+Once a user logs in, they should be able to upload and run transactions for their merchandise they're trying to sell.
+
 # User Stories:
 * As a person looking to make a few extra dollars by cleaning out my closet, I want to be able to upload my item for sale with minimal inputs on a UI that isn't too crowded.
 * As a person who is a fan of a certain band but on a tighter budget, I want to be able to purchase their merchandise at a lower cost from a trustworthy source.
@@ -18,15 +21,17 @@ Javascript, HTML/CSS, React, React Bootstrap, Axios, Mongoose, Express.
 # Unsolved Problems:
 Deleting once a purchase is completed, not just when clicking the 'Delete' button.
 
-[Wireframe:](https://imgur.com/7KitEdD)
+[Wireframe](https://imgur.com/7KitEdD)
 
-[ERD:](https://imgur.com/a/Xu5Wb5G)
+[Screenshot of Application](https://i.imgur.com/Z2yzpcf.png)
 
-[Alternate Repo:](https://github.com/kmvenez/merchzoid-api)
+[ERD](https://imgur.com/a/Xu5Wb5G)
 
-[Heroku:](https://thawing-earth-07651.herokuapp.com/)
+[Alternate Repo](https://github.com/kmvenez/merchzoid-api)
 
-[Deployed Client-Side Link:](https://kmvenez.github.io/merchzoid-client/#/)
+[Heroku](https://thawing-earth-07651.herokuapp.com/)
+
+[Deployed Client-Side Link](https://kmvenez.github.io/merchzoid-client/#/)
 
 # Catalog of Routes
 Verb         |	URI Pattern
