@@ -15,7 +15,7 @@ const router = express.Router()
 // CREATE
 // POST /merch
 router.post('/merch', requireToken, (req, res, next) => {
-  console.log('ksdjfkjsdf')// set owner of the newly created merchandise to be current user
+// set owner of the newly created merchandise to be current user
   req.body.merch.owner = req.user.id
   Merch.create(req.body.merch)
     // respond to succesful `create` with status 201 and JSON of new "merch"
