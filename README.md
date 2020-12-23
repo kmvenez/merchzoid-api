@@ -20,6 +20,8 @@ Deleting once a purchase is completed, not just when clicking the 'Delete' butto
 
 [Wireframe:](https://imgur.com/7KitEdD)
 
+[Screenshot of Application:](https://i.imgur.com/Z2yzpcf.png)
+
 [ERD:](https://imgur.com/a/Xu5Wb5G)
 
 [Alternate Repo:](https://github.com/kmvenez/merchzoid-api)
